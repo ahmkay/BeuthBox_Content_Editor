@@ -1,0 +1,14 @@
+.border {
+    border: 1px solid #e9e9e9;
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 7px 7px 7px grey;
+}
+
+.borderInput {
+    border: 0px solid #e9e9e9;
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px;
+    margin: 10px;
+}
