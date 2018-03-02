@@ -1,5 +1,7 @@
 var countBauchbinde = 0;
 var countAdvert = 0;
+var countLink = 0;
+var countNote = 0;
 
 function saveBauchbinde(){
     $('#bauchbindeModal').modal('toggle');
@@ -19,5 +21,20 @@ function saveAdvert(){
     }
 }
 
+function saveLink(){
+    $('#linkModal').modal('toggle');
+    var text = document.getElementById("linkText").value;
+    if(text){
+        countLink++;
+        $( "<h4>" + countLink + ": " + text + "</h4>" ).insertBefore( "#placeLink" );
+    }
+}
 
-
+function saveNote(){
+    $('#noteModal').modal('toggle');
+    var name = document.getElementById("noteText").value;
+    if(name){
+        countNote++;
+        $( "<h4>" + countNote + ": " + name + "</h4>" ).insertBefore( "#placeNote" );
+    }
+}

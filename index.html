@@ -51,8 +51,8 @@
 <div class="container">
 
     <div class="row">
-        <div class="col border">
-            <h1>Beuth Box Video Editor <i class="fas fa-film"></i></h1>
+        <div class="col border" style="background-color: #fff;">
+            <h1 style="width: 100%; text-align: center;"><i class="fas fa-film"></i> Beuth Box Video Editor </h1>
         </div>
     </div>
 
@@ -61,7 +61,7 @@
 
     <div class="row">
 
-        <div class="col border">
+        <div class="col border" style="background-color: #fff;">
 
 
             <!-- Nav tabs -->
@@ -79,10 +79,16 @@
                     <a class="nav-link" data-toggle="tab" href="#overlayEdit" role="tab">Bauchbinde</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#addEdit" role="tab">Werbung</a>
+                    <a class="nav-link" data-toggle="tab" href="#iconEdit" role="tab">Logo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#uploadEdit" role="tab">Upload</a>
+                    <a class="nav-link" data-toggle="tab" href="#linkEdit" role="tab">Links</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkNote" role="tab">Gong</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#addEdit" role="tab">Werbung</a>
                 </li>
             </ul>
 
@@ -175,6 +181,49 @@
                     </div>
                 </div>
 
+
+
+
+                <div class="tab-pane borderInput" id="iconEdit">
+                    <div class="form-group row">
+                        <label for="addIcon" class="col-sm-4 col-form-label">Logo einfügen</label>
+                        <div class="col-sm-8">
+                            <label class="btn btn-success" for="addIcon"><i class="fas fa-plus"></i>
+                                <input id="addIcon" type="file" style="display:none"
+                                       onchange="$('#uploadIcon').html(this.files[0].name)">
+                                Hinzufügen
+                            </label>
+                            <span class='label label-info' id="uploadIcon" style="margin-left: 25px;"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="timePickAdvert" class="col-sm-4 col-form-label">Zeitpunkt</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="timePickAdvert" placeholder="00:00">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="lastPickAdvert" class="col-sm-4 col-form-label">Dauer</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="lastPickAdvert" placeholder="00:00">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="checkLogo" class="col-sm-4 col-form-label">Dauerhaft anzeigen</label>
+                        <div class="col-sm-8">
+                            <div class="form-check" style="margin-top: 10px;">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkLogo">
+                                    Wenn ausgewählt, wird das Logo dauerhaft angezeigt.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
                 <div class="tab-pane borderInput" id="addEdit" role="tabpanel">
 
                     <div class="form-group row">
@@ -188,32 +237,39 @@
                 </div>
 
 
-                <div class="tab-pane borderInput" id="uploadEdit">
-                    <button class="btn btn-primary">JSON</button><br><br>
-                    <button class="btn btn-success">Hochladen</button>
 
-                   
+                <div class="tab-pane borderInput" id="linkEdit">
+                    <div class="form-group row">
+                        <label for="addLink" class="col-sm-4 col-form-label">Link hinzufügen</label>
+                        <div class="col-sm-8">
+                            <button type="button" class="btn btn-success" id="addLink" style="display: block; margin-bottom: 10px;" onclick="$('#linkModal').modal('show')">
+                                <i class="fas fa-plus"></i> Hinzufügen
+                            </button>
+                            <div id="placeLink" style="width: 0; height: 0;"></div>
+                        </div>
+                    </div>
                 </div>
 
+
+
+
+                <div class="tab-pane borderInput" id="linkNote">
+                    <div class="form-group row">
+                        <label for="addNote" class="col-sm-4 col-form-label">Notification hinzufügen</label>
+                        <div class="col-sm-8">
+                            <button type="button" class="btn btn-success" id="addNote" style="display: block; margin-bottom: 10px;" onclick="$('#noteModal').modal('show')">
+                                <i class="fas fa-plus"></i> Hinzufügen
+                            </button>
+                            <div id="placeNote" style="width: 0; height: 0;"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -222,7 +278,18 @@
         </div>
 
     </div>
-</div>
+
+
+    <div class="row">
+        <div class="col border" style="background-color: #fff;">
+            <button class="btn btn-success" style="float: right; position: relative; bottom: 0; margin: 5px;">Hochladen</button>
+            <button class="btn btn-primary" style="float: right; position: relative; bottom: 0; margin: 5px;">JSON anzeigen</button>
+        </div>
+    </div>
+
+
+
+        </div>
 
 </body>
 
@@ -361,6 +428,163 @@
 </div>
 <!-- Modal ADVERT -->
 
+
+
+
+
+
+
+<!-- Modal LINK -->
+<div class="modal fade" id="linkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Link hinzufügen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="form-group row">
+                    <label for="linkText" class="col-sm-4 col-form-label">Linktext</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="linkText" placeholder="Text">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="linkURL" class="col-sm-4 col-form-label">Link Adresse</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="linkURL" placeholder="http://www. ...">
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+                    <label for="inputLinkIcon" class="col-sm-4 col-form-label">Link Grafik</label>
+                    <div class="col-sm-8">
+                        <label class="btn btn-success" for="inputLinkIcon"><i class="fas fa-plus"></i>
+                            <input id="inputLinkIcon" type="file" style="display:none"
+                                   onchange="$('#uploadLinkGrafik').html(this.files[0].name)">
+                            Hinzufügen
+                        </label>
+                        <span class='label label-info' id="uploadLinkGrafik" style="margin-left: 25px;"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="timePickLink" class="col-sm-4 col-form-label">Zeitpunkt</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="timePickLink" placeholder="00:00">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="lastPickLink" class="col-sm-4 col-form-label">Dauer</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="lastPickLink" placeholder="00:00">
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i> Abbrechen</button>
+                <button type="button" class="btn btn-success" onclick="saveLink()"><i class="fas fa-check"></i> Speichern</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal LINK -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal NOTIFICATION -->
+<div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Notification hinzufügen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="form-group row">
+                    <label for="noteText" class="col-sm-4 col-form-label">Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="noteText" placeholder="Text">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="timePickNote" class="col-sm-4 col-form-label">Zeitpunkt</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="timePickNote" placeholder="00:00">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="lastPickNote" class="col-sm-4 col-form-label">Dauer</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="lastPickNote" placeholder="00:00">
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="inputNoteIcon" class="col-sm-4 col-form-label">Grafik</label>
+                    <div class="col-sm-8">
+                        <label class="btn btn-success" for="inputNoteIcon"><i class="fas fa-plus"></i>
+                            <input id="inputNoteIcon" type="file" style="display:none"
+                                   onchange="$('#uploadNoteIcon').html(this.files[0].name)">
+                            Hinzufügen
+                        </label>
+                        <span class='label label-info' id="uploadNoteIcon" style="margin-left: 25px;"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="inputNoteSound" class="col-sm-4 col-form-label">Sound</label>
+                    <div class="col-sm-8">
+                        <label class="btn btn-success" for="inputNoteSound"><i class="fas fa-plus"></i>
+                            <input id="inputNoteSound" type="file" style="display:none"
+                                   onchange="$('#uploadNoteSound').html(this.files[0].name)">
+                            Hinzufügen
+                        </label>
+                        <span class='label label-info' id="uploadNoteSound" style="margin-left: 25px;"></span>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i> Abbrechen</button>
+                <button type="button" class="btn btn-success" onclick="saveNote()"><i class="fas fa-check"></i> Speichern</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal NOTIFICATION -->
 
 </html>
 
